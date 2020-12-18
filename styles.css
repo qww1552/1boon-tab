@@ -14,7 +14,7 @@ body {
 }
 
 h1,h2 {
-    text-align: center;
+    /* text-align: center; */
     font-size: 20px;
     color: #1e1e1e;
 }
@@ -108,7 +108,11 @@ h1,h2 {
         box-sizing: border-box;
     }
 }
-
+@media screen and (max-width: 640px) {
+    h1,h2 {
+        text-align: center;
+    }
+}
 .cubes {
     display: flex;
 }
