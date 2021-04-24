@@ -1,0 +1,146 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea,button {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    line-height: 1.7;
+    font-family: 'Noto Sans light', 'Malgun gothic', '맑은 고딕', sans-serif;
+    color: #27282d;
+    letter-spacing: -0.03em;
+}
+ul {
+    list-style: none;
+    text-decoration: none;
+}
+.container {
+    padding: 0;
+}
+.link_classify {
+    padding: 15px;
+}
+img {
+    border: 0 none
+}
+.emph_number {
+    font-family: 'raleway regular', 'Malgun gothic', '맑은고딕', sans-serif;
+    letter-spacing: 0
+}
+.wrap_thumb {
+    display: block;
+    position: relative
+}
+
+.thumb_img {
+    display: block;
+    position: relative;
+    width: 100%
+}
+.img_thumb {
+    display: block;
+    width: 100%;
+    height: auto
+}
+.link_classify .img_thumb {
+    position: absolute;
+    top: 0;
+    left: 0
+}
+.list_classify {
+    overflow: hidden;
+    min-width: 110px;
+    margin: 0 auto;
+    padding: 54px 8px 0
+}
+.list_classify li {
+    float: left;
+    width: 33.3%;
+    min-height: 320px
+}
+.list_classify .thumb_img {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 170px
+}
+.list_classify .thumb_img:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-sizing: border-box
+}
+
+.link_classify .img_default {
+    display: block;
+    width: 100%;
+    height: auto
+}
+
+.link_classify .img_thumb {
+    position: absolute;
+    top: 0;
+    left: 0
+}
+.list_classify .wrap_thumb {
+    display: block;
+    position: relative
+}
+.list_classify .link_classify {
+    display: block;
+    margin: 0 20px
+}
+.list_classify .link_classify {
+    margin: 0
+}
+.list_classify li:nth-child(3n) .link_classify {
+    margin: 0
+}
+
+.list_classify li:nth-child(3n-1) .link_classify {
+    margin: 0
+}
+
+.list_classify .info_classify {
+    height: 45px;
+    padding: 12px 0 0 6px
+}
+
+.list_classify .thumb_img {
+    overflow: hidden;
+    height: 122px
+}
+.list_classify .thumb_img {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 170px
+}
+.list_classify .info_classify {
+    overflow: hidden;
+    height: 88px;
+    padding: 15px 21px 0 17px
+}
+.info_classify .tit_thumb {
+    display: block;
+    display: -webkit-box;
+    overflow: hidden;
+    max-height: 65px;
+    font-size: 17px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2
+}
+.info_classify .emph_number {
+    float: left;
+    width: 45px;
+    height: 88px;
+    margin: 2px 15px 0 0;
+    font-size: 24px;
+    line-height: 24px;
+    background: url(//i1.daumcdn.net/img-media/1boon/pc/bg_tag.png) no-repeat 100% 0
+}
+
