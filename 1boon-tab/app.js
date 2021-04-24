@@ -1,19 +1,22 @@
 const $tabs = document.querySelectorAll("li");
 const $list = document.getElementById("list");
+const $loadButton = document.getElementById("load-more");
 
-let selectedTab = $tabs[0];
 const tabName = {0:"recent",1:"view",2:"popular"};
-
+let tabNumber=0;
+let selectedTab = $tabs[tabNumber];
 function selectTab() {
     for (const $tab of $tabs) {
         $tab.addEventListener("click", (event)=>{
-            let tabNumber = activateTab(event.target.parentElement);
+            tabNumber = activateTab(event.target.parentElement);
             let contents = loadData(tabName[tabNumber]);
-            drawPage(contents);
+            drawPage(contents,10);
         });
     }
 }
-
+$loadButton.addEventListener("click",() => {
+    loadMorePage();
+});
 function activateTab(tab) {
     selectedTab.classList.remove("active");
     tab.classList.add("active");
@@ -29,6 +32,7 @@ function loadData(name) {
     console.log(xhr.responseText);
     return JSON.parse(xhr.responseText);
 }
+
 function drawPage(contents, pages) {
     let cardIndex = 0;
     const ul = document.createElement("ul");
@@ -42,6 +46,11 @@ function drawPage(contents, pages) {
     }
     $list.innerHTML = "";
     $list.append(ul);
+}
+
+function loadMorePage() {
+    let contents = loadData(tabName[tabNumber]);
+    drawPage(contents,contents.length);
 }
 
 function Card(object) {
