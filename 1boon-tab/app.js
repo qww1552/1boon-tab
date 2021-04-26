@@ -1,22 +1,33 @@
 const $tabs = document.querySelectorAll("li");
 const $list = document.getElementById("list");
 const $loadButton = document.getElementById("load-more");
+const $loadingMark = document.getElementById("loading-mark");
 
-const tabName = {0:"recent",1:"view",2:"popular"};
-let tabNumber=0;
+const tabName = {0: "recent", 1: "view", 2: "popular"};
+let tabNumber = 0;
 let selectedTab = $tabs[tabNumber];
+const NUMBER_OF_CARD = 10;
+let amountOfCard = NUMBER_OF_CARD;
+
+window.onload = () => {
+    displayPage();
+    selectTab();
+    $loadButton.addEventListener("click", () => {
+        loadMorePage();
+    });
+}
+
 function selectTab() {
     for (const $tab of $tabs) {
-        $tab.addEventListener("click", (event)=>{
+        $tab.addEventListener("click", (event) => {
+            $list.innerHTML = "";
             tabNumber = activateTab(event.target.parentElement);
-            let contents = loadData(tabName[tabNumber]);
-            drawPage(contents,10);
+            amountOfCard=NUMBER_OF_CARD;
+            displayPage();
         });
     }
 }
-$loadButton.addEventListener("click",() => {
-    loadMorePage();
-});
+
 function activateTab(tab) {
     selectedTab.classList.remove("active");
     tab.classList.add("active");
@@ -26,14 +37,16 @@ function activateTab(tab) {
 }
 
 function loadData(name) {
-    let xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
+    ////
+    // 비동기로 전환
+    ////
     xhr.open("GET", `./${name}.json`, false);
     xhr.send();
-    console.log(xhr.responseText);
     return JSON.parse(xhr.responseText);
 }
 
-function drawPage(contents, pages) {
+function drawCard(contents, pages) {
     let cardIndex = 0;
     const ul = document.createElement("ul");
     ul.classList.add("list_classify");
@@ -49,8 +62,22 @@ function drawPage(contents, pages) {
 }
 
 function loadMorePage() {
-    let contents = loadData(tabName[tabNumber]);
-    drawPage(contents,contents.length);
+    amountOfCard+=NUMBER_OF_CARD;
+    displayPage();
+}
+
+function makeLoadingMark() {
+    return `<div class="text-center" id="loading-mark">
+                <span class="glyphicon glyphicon-refresh">로딩중</span>
+            </div>`
+}
+
+function displayPage() {
+    $list.innerHTML += makeLoadingMark();
+    setTimeout(()=>{
+        const contents = loadData(tabName[tabNumber]);
+        drawCard(contents, amountOfCard);
+    },1000);
 }
 
 function Card(object) {
@@ -73,4 +100,3 @@ function Card(object) {
         return card;
     };
 }
-selectTab();
